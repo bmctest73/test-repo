@@ -8,10 +8,10 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: '3.x'
 
@@ -21,6 +21,6 @@ jobs:
 
     - name: Validate Filenames
       run: |
-        for file in $(git diff --name-only ${{ github.sha }}); do
+        for file in $(find . -type f); do
           python filename_validator.py "$file"
         done
