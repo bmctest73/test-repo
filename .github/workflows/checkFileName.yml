@@ -1,0 +1,13 @@
+name: check-naming convections
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  check-naming:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: batista/lint-filenames@v1
+        name: Validating my-folder filenames
+        with:
+          path: './my-folder'
+          pattern: '^bmwfs-\w*-\w*$'
