@@ -4,7 +4,7 @@ import sys
 
 def is_valid_filename(filename):
     # Define your enumeration list here
-    enum_list = ["cust1", "cust2", "cust3"]
+    enum_list = ["custdigit", "finance", "HR"]
     
     # Create a regex pattern using the enumeration list
     pattern = rf"^bmwfs-({'|'.join(enum_list)})-\w*$"
