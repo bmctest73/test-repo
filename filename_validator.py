@@ -1,3 +1,4 @@
+import os
 import re
 import sys
 
@@ -10,8 +11,12 @@ def is_valid_filename(filename):
     
     return bool(re.match(pattern, filename))
 
+def validate_files_in_path(path):
+    for root, _, files in os.walk(path):
+        for file in files:
+            if not is_valid_filename(file):
+                print(f"Error: Invalid filename '{file}' in path '{root}'.")
+
 if __name__ == "__main__":
-    filename = sys.argv[1]
-    if not is_valid_filename(filename):
-        print(f"Error: Invalid filename '{filename}'.")
-        sys.exit(1)
+    path_to_check = sys.argv[1]
+    validate_files_in_path(path_to_check)
